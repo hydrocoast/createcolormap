@@ -3,6 +3,12 @@
 This function allows to create colormap Nx3 array (RGB) with an arbitrary combination of colors. 
 RGB values between the specified colors will be smoothly connected by linear interpolation.
 
+
+<p align="center">
+<img src="https://github.com/hydrocoast/createcolormap/blob/main/createcolormap_example.png", width="400">
+</p>  
+
+
 ## Usage
 + blue-white-red (polar)
   ```matlab
