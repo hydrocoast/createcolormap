@@ -1,11 +1,11 @@
-[![View createcolormap on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://jp.mathworks.com/matlabcentral/fileexchange/100084-createcolormap)
-## createcolormap.m
+## createcolormap.m 
+[![View createcolormap on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://jp.mathworks.com/matlabcentral/fileexchange/100084-createcolormap)   
 This function allows to create colormap Nx3 array (RGB) with an arbitrary combination of colors. 
 RGB values between the specified colors will be smoothly connected by linear interpolation.
 
 
 <p align="center">
-<img src="https://github.com/hydrocoast/createcolormap/blob/main/createcolormap_example.png", width="400">
+<img src="https://github.com/hydrocoast/createcolormap/blob/main/createcolormap_example.png", width="600">
 </p>  
 
 
