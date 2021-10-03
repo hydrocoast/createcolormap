@@ -18,7 +18,7 @@ RGB values between the specified colors will be smoothly connected by linear int
 
   bwr = createcolormap(b,w,r); % 256x3 array
   
-  colormap(cmap)
+  colormap(bwr)
   colorbar
   ```
 
@@ -30,7 +30,7 @@ RGB values between the specified colors will be smoothly connected by linear int
 
   bwr = createcolormap(b,w,r); % 256x3 array
 
-  colormap(cmap)
+  colormap(bwr)
   colorbar
   ```
 

@@ -13,7 +13,7 @@ function cmap = createcolormap(varargin)
 % 
 %   bwr = createcolormap(b,w,r); % 256x3 array
 %   
-%   colormap(cmap)
+%   colormap(bwr)
 %   colorbar
 %   ```
 % 
@@ -25,7 +25,7 @@ function cmap = createcolormap(varargin)
 % 
 %   bwr = createcolormap(b,w,r); % 256x3 array
 % 
-%   colormap(cmap)
+%   colormap(bwr)
 %   colorbar
 %   ```
 % 
