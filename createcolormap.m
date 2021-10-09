@@ -64,27 +64,58 @@ function cmap = createcolormap(varargin)
 % 
 % 
 
-%% narg check
-if nargin < 2
-    error('At least two input arguments are required.')
+%% nargin check
+if nargin < 1
+    error('Invalid number of arguments. At least one input argument is required.')
 end
-arg1 = varargin{1};
-arg2 = varargin{2};
 
-%% 2 colors && 2 args
-%      cmap = createcolormap(colorA, colorB)
-%  ->  cmap = createcolormap(256, colorA, colorB)
-if nargin==2
-    if numel(arg1)~=3 || numel(arg2)~=3
-        error('At least two different colors must be specified.')
-    end
-    color1 = arg1;
-    color2 = arg2;    
+%% nargin==1, Color RGB matrix
+if nargin==1
     n = 256;
-    cmap = createcolormap(n,color1,color2);
+    cmap = createcolormap(n,varargin{1});
     return
 end
 
+%% nargin >= 2
+arg1 = varargin{1};
+arg2 = varargin{2};
+
+if nargin==2
+    switch numel(arg1)
+        case 1
+            %% number of colors and RGB matrix input
+            %      cmap = createcolormap(n,C)
+            %  ->  cmap = createcolormap(n, C(1,:), C(2,:), C(3,:), ...)
+            C = varargin{2};
+            if size(C,1)<2 || size(C,2)~=3
+                error('The color RGB array input must be an Nx3 (N>1) array.')
+            end
+            n = arg1;
+            ncolor = size(C,1);
+            Ccell = cell(ncolor,1);
+            for i = 1:ncolor
+                Ccell{i} = C(i,:);
+            end
+            cmap = createcolormap(n,Ccell{:});
+            
+        case 3
+            %% two different colors input
+            %      cmap = createcolormap(colorA, colorB)
+            %  ->  cmap = createcolormap(256, colorA, colorB)
+            if numel(arg2)~=3
+                error('At least two different colors must be specified.')
+            end
+            color1 = arg1;
+            color2 = arg2;
+            n = 256;
+            cmap = createcolormap(n,color1,color2);
+        otherwise
+            error('The number of elements in the input argument is invalid. It must be 1 or 3.');
+    end
+    return
+end
+
+%% nargin >= 3
 %% assign args
 switch numel(arg1)
     case 1
