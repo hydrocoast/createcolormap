@@ -1,8 +1,17 @@
 function cmap = createcolormap(varargin)
 %% create a user-specified colormap
-% 
 % This function allows to create colormap Nx3 array (RGB) with an arbitrary combination of colors. 
 % RGB values between the specified colors will be smoothly connected by linear interpolation.
+%
+%    cmap = createcolormap(C);
+%    cmap = createcolormap(n,C);
+%    cmap = createcolormap(colorA, colorB);
+%    cmap = createcolormap(n, colorA, colorB);
+%    cmap = createcolormap(colorA, colorB, colorC, colorD, ...);
+%    cmap = createcolormap(n, colorA, colorB, colorC, colorD, ...);
+%
+% where n is the number of segments for the output color scheme,
+% and C is the RGB matrix of color junctions.
 % 
 % Usage examples:
 % 1) blue-white-red (polar)
@@ -47,10 +56,21 @@ function cmap = createcolormap(varargin)
 % 
 %   surf(peaks); 
 %   colormap(cmap);
-%   caxis([-4,4]);
 %   colorbar;
 %   ```
 % 
+%
+% 3) RGB matrix
+%
+%   ```matlab
+%   cmap = createcolormap(rand(10,3)); % 10 random colors
+%
+%   surf(peaks);
+%   colormap(cmap);
+%   colorbar;
+%   ```
+%
+%
 % License:
 %   MIT
 % 
@@ -61,7 +81,7 @@ function cmap = createcolormap(varargin)
 % 
 % Update (yyyy/mm/dd):
 %   v0.1  2021/10/01
-% 
+%   v0.2  2021/10/09
 % 
 
 %% nargin check
@@ -80,6 +100,7 @@ end
 arg1 = varargin{1};
 arg2 = varargin{2};
 
+%% createcolormap(n,C) or createcolormap(colorA, colorB)
 if nargin==2
     switch numel(arg1)
         case 1
@@ -110,7 +131,7 @@ if nargin==2
             n = 256;
             cmap = createcolormap(n,color1,color2);
         otherwise
-            error('The number of elements in the input argument is invalid. It must be 1 or 3.');
+            error('The number of elements in the input argument is invalid. It must be 1, 3, or Nx3.');
     end
     return
 end
@@ -135,7 +156,7 @@ switch numel(arg1)
         color2 = arg2;
         color3 = varargin{3};
     otherwise
-        error('The number of elements in the input argument is invalid. It must be 1 or 3.');
+        error('The number of elements in the input argument is invalid. It must be 1, 3, or Nx3.');
 end
 
 %% arg validity
@@ -180,9 +201,10 @@ if ncolor > 3
     n_each = diff(round(linspace(0,n,ncolor+1)));
     cmap = cell(ncolor,1);
     for i = 1:ncolor-1
-        cmap{i} = createcolormap(n_each(i),varargin{i+offset_color},varargin{i+1+offset_color});
+        cmap{i} = createcolormap(n_each(i), varargin{i+offset_color}, varargin{i+1+offset_color});
     end
     cmap = vertcat(cmap{:});
+    return
 end
 
 end
