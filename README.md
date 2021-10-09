@@ -7,7 +7,20 @@ RGB values between the specified colors will be smoothly connected by linear int
 <p align="center">
 <img src="https://github.com/hydrocoast/createcolormap/blob/main/createcolormap_example.png", width="600">
 </p>  
+<p align="center">
+<img src="https://github.com/hydrocoast/createcolormap/blob/main/createcolormap_example_N5.gif", width="720">
+</p>  
 
+## Example
+  ```matlab
+  cmap = createcolormap(C);
+  cmap = createcolormap(n,C);
+  cmap = createcolormap(colorA, colorB);
+  cmap = createcolormap(n, colorA, colorB);
+  cmap = createcolormap(colorA, colorB, colorC, colorD, ...);
+  cmap = createcolormap(n, colorA, colorB, colorC, colorD, ...);
+  ```
+  where `n` is the number of segments for the output color scheme, and `C` is the RGB matrix of color junctions.
 
 ## Usage
 + blue-white-red (polar)
@@ -50,9 +63,18 @@ RGB values between the specified colors will be smoothly connected by linear int
 
   surf(peaks); 
   colormap(cmap);
-  caxis([-4,4]);
   colorbar;
   ```
+
++ RGB matrix
+  ```matlab
+  cmap = createcolormap(rand(10,3)); % 10 random colors
+
+  surf(peaks);
+  colormap(cmap);
+  colorbar;
+  ```
+
 
 ## License
 MIT
@@ -63,4 +85,5 @@ Disaster Prevention Research Institute, Kyoto University
 
 ## Update
   v0.1  2021/10/01
+  v0.2  2021/10/09
 
