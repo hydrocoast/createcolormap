@@ -84,6 +84,6 @@ MIT
 Disaster Prevention Research Institute, Kyoto University  
 
 ## Update
-  v0.1  2021/10/01
-  v0.2  2021/10/09
+  v0.1  2021/10/01   
+  v0.2  2021/10/09   
 
