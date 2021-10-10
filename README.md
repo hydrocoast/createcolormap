@@ -8,7 +8,7 @@ RGB values between the specified colors will be smoothly connected by linear int
 <img src="https://github.com/hydrocoast/createcolormap/blob/main/createcolormap_example.png", width="600">
 </p>  
 <p align="center">
-<img src="https://github.com/hydrocoast/createcolormap/blob/main/createcolormap_example_N5.gif", width="720">
+<img src="https://github.com/hydrocoast/createcolormap/blob/main/createcolormap_example_N5.gif", width="750">
 </p>  
 
 ## Example
